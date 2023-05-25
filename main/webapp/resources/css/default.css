@@ -1,0 +1,89 @@
+@charset "utf-8";
+a {
+	text-decoration: none;
+	color: inherit;
+}
+a:hover {
+	text-decoration: underline;	
+}
+fieldset {
+	max-width: 500px;
+	margin: 50px auto;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+header {
+	text-align: center;
+}
+div#loginInfo {
+	width: 800px;
+	height: 50px;
+	text-align: right;
+	margin: 0 auto;
+}
+nav > ul {
+	padding-left: 0;
+	width: 800px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+}
+nav > ul > li {
+	display: flex;
+	justify-content: center;
+	border-bottom: 2px solid white;
+	font-size: 20px;
+	padding: 5px 10px;
+}
+nav a:hover {
+	text-decoration: none;
+}
+nav > ul > li:hover {
+	border-bottom: 2px solid black;
+	background-color: lightpink;
+}
+main {
+	width: 850px;
+	border-top: 3px solid black;
+	margin: 10px auto;
+}
+/* 
+	톰캣서버에서 정적자원의 새로고침을 반영하지 못한다면
+	브라우저에서 Ctrl + F5 로 새로고침을 시도해보자
+*/
+table {
+	border: 2px solid black;
+	border-collapse: collapse;	
+}
+td, th {
+	padding: 5px 10px;
+	border: 1px solid grey;
+}
+summary {
+	margin: 10px 0;
+	cursor: pointer;
+}
+pre {
+	font-family: 'Consolas';
+	font-size: 16px;	
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

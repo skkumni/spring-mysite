@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.itbank.repository.MemberDAO">
+
+	<select id="login" parameterType="member" resultType="member">
+		select * from member 
+			where
+				userid = #{userid}
+				and
+				userpw = #{userpw}
+	</select>
+	
+	<insert id="join" parameterType="member">
+		insert into member 
+			(userid, userpw, birthDate, nickname, email, gender) 
+		values (
+			#{userid},
+			#{userpw},
+			#{birthDate},
+			#{nickname},
+			#{email},
+			#{gender}
+		)
+	</insert>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

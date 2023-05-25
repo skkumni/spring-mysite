@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.itbank.repository.BoardDAO">
+	
+	<select id="selectList" resultType="board" parameterType="hashmap">
+		select
+			* 
+			from board
+			<if test="search != null">
+			where
+				title like '%${search}%'
+				or
+				writer like '%${search}%'
+				or
+				content like '%${search}%'
+			</if>
+				
+			order by idx desc
+			offset 
+				#{paging.offset} rows
+			fetch next 
+				#{paging.perPage} rows only
+	</select>
+	
+	<insert id="insert" parameterType="board">
+		insert into board
+			(
+				writer, 
+				title, 
+				content, 
+				<if test="fileName != null">fileName,</if> 
+				allowReply
+			)
+		values 
+			(
+				#{writer},		
+				#{title},		
+				#{content},		
+				<if test="fileName != null">#{fileName},</if>	
+				#{allowReply}	
+			)
+	</insert>
+	
+	<select id="selectOne" parameterType="int" resultType="board">
+		select * from board
+			where
+				idx = #{idx}
+	</select>
+	
+	<!-- 검색어를 전달받아서, 검색어를 포함하는 게시글의 개수를 반환 -->
+	<select id="selectBoardCount" parameterType="String" resultType="int">
+		select count(*) from board
+			<if test="search != null">
+			where
+				title like '%${search}%'
+				or
+				writer like '%${search}%'
+				or
+				content like '%${search}%'
+			</if>
+	</select>
+	
+	
+	
+	<delete id="delete" parameterType="hashmap">
+		delete board 
+			where 
+				idx = #{idx}
+				and
+				writer = #{writer} 
+	</delete>
+	
+	
+	<update id="update" parameterType="board">
+		update board
+			<set>
+				title = #{title},
+				content = #{content},
+				<if test="fileName != null">fileName = #{fileName},</if>
+				allowReply = #{allowReply},
+			</set>
+			where
+				idx = #{idx}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
